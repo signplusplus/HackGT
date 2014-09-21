@@ -45,15 +45,15 @@ void setup() {
   
   digitalWrite(pinYellow, HIGH);
     
-  Serial.begin (9600);
+  Serial.begin (11520);
 
   //five second calibration
   while (millis() < 5000) {
-      sensorLittle = analogRead(sensorPinLittle);
-      sensorRing = analogRead(sensorPinRing);
-      sensorMiddle = analogRead(sensorPinMiddle);
-      sensorIndex = analogRead(sensorPinIndex);
-      sensorThumb = analogRead(sensorPinThumb);
+      sensorLittle = analogRead(pinLittle);
+      sensorRing = analogRead(pinRing);
+      sensorMiddle = analogRead(pinMiddle);
+      sensorIndex = analogRead(pinIndex);
+      sensorThumb = analogRead(pinThumb);
       
     //record max value for little finger
     if (sensorLittle > maxLittle) {
@@ -188,7 +188,7 @@ void loop() {
   
   //--------------------------------LetterA-----------------------------
   
-  if (sensorLittle == 1 && sensorRing == 1 && sensorMiddle == 1 && sensorIndex == 1 && sensorThumb > 1) {
+  if (sensorLittle < 50 && sensorRing < 50 && sensorMiddle < 50 && sensorIndex < 50 && sensorThumb > 100) {
     
     Serial.println  ("\n");
     Serial.println ("A"); //Print letter A to serial
@@ -202,7 +202,7 @@ void loop() {
   
   //--------------------------------LetterB-----------------------------
   
-  if (sensorLittle > 200 && sensorRing > 200 && sensorMiddle > 200 && sensorIndex > 200 && sensorThumb == 1) {
+  if (sensorLittle > 200 && sensorRing > 200 && sensorMiddle > 200 && sensorIndex > 200 && sensorThumb < 50) {
     
     Serial.println ("B"); //Print letter B to serial
     Serial.println  ("        ");
@@ -216,7 +216,7 @@ void loop() {
   //--------------------------------LetterC-----------------------------
   
   
-  if (sensorLittle < 200 && sensorLittle > 20 && sensorRing < 200 && sensorRing > 20 && sensorMiddle < 200 && sensorMiddle > 20 && sensorIndex < 200 && sensorIndex > 20 && sensorThumb < 200 && sensorThumb > 20 && sensorThumb == 1) {
+  if (sensorLittle < 200 && sensorLittle > 20 && sensorRing < 200 && sensorRing > 20 && sensorMiddle < 200 && sensorMiddle > 20 && sensorIndex < 200 && sensorIndex > 20 && sensorThumb < 200 && sensorThumb > 20 && sensorThumb > 200) {
     
     Serial.println ("C"); //Print letter C to serial
     Serial.println  ("        ");
@@ -230,7 +230,7 @@ void loop() {
   //--------------------------------LetterD-----------------------------
   
   
-  if (sensorLittle == 1 && sensorRing == 1 && sensorMiddle == 1 && sensorIndex > 100 && sensorThumb == 1) {
+  if (sensorLittle <50 && sensorRing < 50 && sensorMiddle < 50 && sensorIndex > 100 && sensorThumb < 50) {
     
     Serial.println ("D"); //Print letter D to serial
     Serial.println  ("        ");
@@ -258,7 +258,7 @@ void loop() {
   //--------------------------------LetterF-----------------------------
   
   
-  if (sensorLittle == 1 && sensorRing > 200 && sensorMiddle > 200 && sensorIndex = 1 && sensorThumb == 1) {
+  if (sensorLittle == 1 && sensorRing > 200 && sensorMiddle > 200 && sensorIndex == 1 && sensorThumb == 1) {
     
     Serial.println ("F"); //Print letter F to serial
     Serial.println  ("        ");
