@@ -207,11 +207,16 @@ void loop() {
                         //--------------------------------LetterR-----------------------------
 
 
-                        if (sensorLittle < 75 && sensorLittle > 40 && sensorRing > 50 && sensorMiddle < 75 && sensorIndex > 55 ) {
+                        if (sensorLittle < 75 && sensorLittle > 30 && (sensorRing > 50 || sensorRing < 30) && sensorMiddle < 75 && sensorIndex > 55) {
 
                           Serial.println ("R"); //Print letter R to serial
                           Serial.println  ("        ");
                           delay(1000);
+                        }
+
+                        else {
+                          delay (1000);
+
                         }
                       }
                     }
